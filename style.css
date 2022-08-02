@@ -10,9 +10,30 @@
 body{
     width: 100%;
     min-height: 100vh;
-    --bg-color: hsl(0,0,98%);
+    --bg-color: hsl(0,0,100%);
+    --bg-color-alt: hsl(0,0,90%);
     --font-color:hsl(0, 0%, 0%);
+    --dd-color: #fff;
     font-family: 'Nunito Sans', sans-serif;
+    background-color: var(--bg-color-alt) !important;
+}
+
+.dark {
+    --font-color: white;
+    --bg-color:hsl(207, 26%, 17%);
+    --bg-color-alt:hsl(209, 23%, 22%);
+    --dd-color:hsl(209, 23%, 22%);
+    --countrybgColor: hsl(207, 26%, 17%);
+    background: var(--bg-color);
+    color: var(--font-color);
+}
+
+header {
+    background: var(--bg-color-alt);
+}
+
+main, section {
+    background: var(--bg-color);
 }
 
 .container {
@@ -30,7 +51,10 @@ button{
     outline: none;
     border: 0;
     background: transparent;
+    color: var(--font-color);
 }
+
+
 
 .toggle {
     font-size: 1rem;
@@ -55,12 +79,18 @@ button{
     border: 0;
     font-size: 1rem;
     letter-spacing: 0.1rem;
+    background: var(--bg-color-alt);
 }
+
 
 .form-control i {
     position: absolute;
     top: 1rem;
     right: 1rem;
+    cursor: pointer;
+}
+
+i {
     cursor: pointer;
 }
 
@@ -77,7 +107,7 @@ button{
     display: flex;
     justify-content: space-between;
     cursor: pointer;
-
+    background: var(--bg-color-alt);
 }
 
 .drop {
@@ -85,11 +115,15 @@ button{
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     top: 4rem;
     padding: 1rem 0.8rem;
-    background: var(--bg-color);
+    background: var(--dd-color);
 }
 
 .drop p {
     margin: 0.1rem 0;
+}
+
+.showDropDown {
+    display: none;
 }
 
 
@@ -108,6 +142,8 @@ button{
     width: 300px;
     border-radius: 5px;
 overflow: hidden;
+background: var(--bg-color-alt);
+
 }
 
 .country-img {
@@ -117,6 +153,7 @@ overflow: hidden;
 .country-img img{
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 .country-info {
@@ -131,4 +168,69 @@ overflow: hidden;
 
 .country-info p>strong {
     font-weight: 600;
+}
+
+
+/* Country Modal  */
+
+.countryModal {
+    /* position: fixed; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+    padding: 2rem;
+}
+
+.back{
+    position: absolute;
+    top: 10rem;
+    left: 2rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    padding: 0.4rem 2rem;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.modal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.leftModal {
+    width: 50%;
+}
+
+.leftModal img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.rightModal {
+    width: 50%;
+    margin-left: 1.4rem;
+}
+
+.modal-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.rightModal h1{
+    margin: 10px 0;
+    letter-spacing: 1px;
+    font-size: 3rem;
+}
+
+.inner p>strong {
+font-weight: 600;
+}
+
+.show {
+    display: none;
 }
