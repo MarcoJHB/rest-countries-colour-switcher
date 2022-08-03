@@ -185,6 +185,7 @@ background: var(--bg-color-alt);
 
 .back{
     position: absolute;
+    background: var(--countrybgColor);
     top: 10rem;
     left: 2rem;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
@@ -198,11 +199,12 @@ background: var(--bg-color-alt);
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 100%;
+    height: 90vh;
 }
 
 .leftModal {
     width: 50%;
+    padding-right: 4rem;
 }
 
 .leftModal img {
@@ -233,4 +235,20 @@ font-weight: 600;
 
 .show {
     display: none;
+}
+
+/* Borders Section  */
+
+.borders-section {
+    padding-top: 3rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.btn {
+    background: var(--countrybgColor);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    padding: 0.4rem 2rem;
+    font-size: 1rem;
 }
