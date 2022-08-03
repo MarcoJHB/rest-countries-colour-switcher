@@ -35,7 +35,6 @@ async function renderCountries() {
         </div>`;
     countriesContainer.appendChild(countryCard);
     countryCodeObj.code = data.cca3;
-    countryCodeObj.code = data.cca3;
     countryCodes.push({ code: data.cca3, country: data.name.common });
     // console.log(data);
     countryCard.addEventListener('click', () => {
@@ -92,15 +91,13 @@ function showCountryDetail(data) {
   }
 
   function getBorderCountries() {
-    let borderCountries = Array(Object.values(data.borders).map((country) => country)).filter(
-      (e) => e.code === countryCodes.code
+    let borderCountries = Object.values(data.borders).map(
+      (code) => countryCodes.find((o) => o.code === code).country
     );
-    return console.log(borderCountries);
-
-    // borderCountries.forEach((country) => {
-    //   return borderCountries.map((country) => countryCodes.name);
-    // });
-    // let matchingCode = Array(data.find((border) => border.cca3 === borderCountries));
+    // console.log(typeof borderCountries);
+    if (typeof borderCountries != 'undefined' || typeof borderCountries != 'null') {
+      return borderCountries;
+    } else return '';
   }
   countryModal.innerHTML = `<button class="back">Back</button>
   <div class="modal">
@@ -125,7 +122,9 @@ function showCountryDetail(data) {
           <p><strong>Languages:</strong> ${Object.values(data.languages).join(', ')}</p>
         </div>
       </div>
-    <div class="borders-section"><p><strong>Border Countries:</strong> ${getBorderCountries()} </p></div>
+    <div class="borders-section"><p><strong>Border Countries: </strong>${getBorderCountries().join(
+      ' '
+    )}</p></div>
 
     </div>
   </div>`;
