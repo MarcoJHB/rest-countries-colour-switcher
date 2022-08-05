@@ -16,6 +16,7 @@ async function getCountries() {
   } catch (error) {
     console.log(error);
   }
+  console.log(data);
 }
 
 async function renderCountries() {
@@ -43,7 +44,9 @@ async function renderCountries() {
         </div>
         <div class="country-info">
           <h5 class="countryName">${data.name.common}</h5>
-          <p><strong>Population</strong> ${data.population}</p>
+          <p><strong>Population</strong> ${data.population
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</p>
           <p class="regionName"><strong>Region</strong> ${data.region}</p>
           <p><strong>Capital</strong> ${data.capital}</p>
         </div>`;
@@ -111,7 +114,9 @@ function showCountryDetail(data) {
 
   function getBorderCountries() {
     return Object.values(data.borders).map(function (code) {
-      return `<p class="btn">${countryCodes.find((o) => o.code === code).country}</p>`;
+      return `<p class="btn country-border">${
+        countryCodes.find((o) => o.code === code).country
+      }</p>`;
     });
   }
 
@@ -125,7 +130,9 @@ function showCountryDetail(data) {
       <div class="modal-info">
         <div class="innerLeft inner">
           <p><strong>Native Name:</strong> ${getNativeName()}</p>
-          <p><strong>Population:</strong> ${data.population}</p>
+          <p><strong>Population:</strong> ${data.population
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</p>
           <p><strong>Region:</strong> ${data.region}</p>
           <p><strong>Sub Region:</strong> ${data.subregion}</p>
         </div>
@@ -150,5 +157,10 @@ function showCountryDetail(data) {
     countryModal.classList.toggle('show');
     countries.classList.toggle('show');
     filterSearch.classList.toggle('show');
+  });
+
+  const countryBorder = document.querySelector('.country-border');
+  countryBorder.addEventListener('click', () => {
+    showCountryDetail(data);
   });
 }

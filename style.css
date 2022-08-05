@@ -18,6 +18,10 @@ body{
     background-color: var(--bg-color-alt) !important;
 }
 
+h1 {
+    font-size: clamp(1rem, 2.5vw, 2rem); 
+}
+
 .dark {
     --font-color: white;
     --bg-color:hsl(207, 26%, 17%);
@@ -38,7 +42,7 @@ main, section {
 
 .container {
     width: 100%;
-    padding: 30px;
+    padding: 2rem 10%;
     display: flex;
     justify-content: space-between;
 }
@@ -54,7 +58,9 @@ button{
     color: var(--font-color);
 }
 
-
+input {
+    color: var(--font-color);
+}
 
 .toggle {
     font-size: 1rem;
@@ -65,7 +71,7 @@ button{
 }
 
 .form-control {
-    width: 400px;
+    max-width: 400px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     position: relative;
     border-radius: 5px;
@@ -78,7 +84,6 @@ button{
     outline: 0;
     border: 0;
     font-size: 1rem;
-    letter-spacing: 0.1rem;
     background: var(--bg-color-alt);
 }
 
@@ -114,7 +119,10 @@ i {
     position: absolute;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     top: 4rem;
+    width: 100%;
+
     padding: 1rem 0.8rem;
+    border-radius: 5px;
     background: var(--dd-color);
 }
 
@@ -130,16 +138,15 @@ i {
 /* Countries Section  */
 
 .countries {
-    padding: 2rem;
+    padding: 2rem 10%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
-    gap: 1.2rem
+    gap: 5rem
 }
 
 .country {
-    min-height: 350px;
+    min-height: 250px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    width: 300px;
     border-radius: 5px;
 overflow: hidden;
 background: var(--bg-color-alt);
@@ -147,7 +154,8 @@ background: var(--bg-color-alt);
 }
 
 .country-img {
-    height: 250px;
+    /* height: 200px; */
+    aspect-ratio: 3 / 2;
 }
 
 .country-img img{
@@ -163,7 +171,6 @@ background: var(--bg-color-alt);
 .country-info h5 {
     padding: 0.5rem 0;
     font-size: 1.2rem;
-    letter-spacing: 1px;
 }
 
 .country-info p>strong {
@@ -175,31 +182,28 @@ background: var(--bg-color-alt);
 
 .countryModal {
     /* position: fixed; */
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     background: var(--bg-color);
-    padding: 2rem;
+    padding: 4rem 10%;
 }
 
 .back{
-    position: absolute;
+    /* position: absolute; */
     background: var(--countrybgColor);
-    top: 10rem;
-    left: 2rem;
+
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     padding: 0.4rem 2rem;
     font-size: 1rem;
-    letter-spacing: 1px;
 }
 
 .modal {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    padding-top: 4rem;
     width: 100%;
-    height: 90vh;
+    /* height: 90vh; */
 }
 
 .leftModal {
@@ -208,8 +212,8 @@ background: var(--bg-color-alt);
 }
 
 .leftModal img {
+    max-height: 400px;
     width: 100%;
-    height: 100%;
     object-fit: cover;
 }
 
@@ -225,7 +229,6 @@ background: var(--bg-color-alt);
 
 .rightModal h1{
     margin: 10px 0;
-    letter-spacing: 1px;
     font-size: 3rem;
 }
 
@@ -253,3 +256,30 @@ font-weight: 600;
     font-size: 1rem;
     cursor: pointer;
 }
+
+
+
+@media only screen and (max-width: 500px) {
+    .filter-search{
+     flex-direction: column;
+     gap: 2rem  ;
+    }
+
+    .countryModal {
+        padding: 2rem 2rem;
+    }
+
+    .modal {
+        flex-direction: column;
+        padding-top: 2rem;
+    }
+
+    .leftModal, .rightModal {
+        width: 100%;
+        margin: 0 auto;
+    }
+    .borders-section {
+        display: flex;
+        flex-wrap: wrap;
+    }
+  }
