@@ -36,7 +36,7 @@ async function renderCountries() {
     countriesContainer.appendChild(countryCard);
     countryCodeObj.code = data.cca3;
     countryCodes.push({ code: data.cca3, country: data.name.common });
-    // console.log(data);
+    console.log(data);
     countryCard.addEventListener('click', () => {
       showCountryDetail(data);
     });
@@ -91,14 +91,11 @@ function showCountryDetail(data) {
   }
 
   function getBorderCountries() {
-    let borderCountries = Object.values(data.borders).map(
-      (code) => countryCodes.find((o) => o.code === code).country
-    );
-    // console.log(typeof borderCountries);
-    if (typeof borderCountries != 'undefined' || typeof borderCountries != 'null') {
-      return borderCountries;
-    } else return '';
+    return Object.values(data.borders).map(function (code) {
+      return `<p class="btn">${countryCodes.find((o) => o.code === code).country}</p>`;
+    });
   }
+
   countryModal.innerHTML = `<button class="back">Back</button>
   <div class="modal">
     <div class="leftModal">
@@ -128,6 +125,14 @@ function showCountryDetail(data) {
 
     </div>
   </div>`;
+  // negCountries.forEach((el) => {
+  //   let p = document.createElement('p');
+  //   p.classList.add(btn);
+  //   p.innerHTML = `<p>${el}</p>`;
+  //   console.log(p);
+  //   const borderSection = document.querySelector('.borders-section');
+  //   borderSection.appendChild(p);
+  // });
   const back = countryModal.querySelector('.back');
   back.addEventListener('click', () => {
     countryModal.classList.toggle('show');
